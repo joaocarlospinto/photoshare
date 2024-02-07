@@ -17,6 +17,7 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 @RequiredArgsConstructor
 @CrossOrigin(origins = {"http://localhost:4200",
         "https://joaocarlospinto.github.io/beerprojectfrontend/",
+        "https://joaocarlospinto.github.io/beerproject/",
         "https://joaocarlospinto.github.io/"
 })
 public class ImageController {
