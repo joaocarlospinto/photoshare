@@ -32,9 +32,14 @@ public class ImageController {
 
     @GetMapping("/{fileName}")
     public ResponseEntity<?> downloadImage(@PathVariable String fileName) {
-        byte[] imageData = imageService.downloadImage(fileName);
-        return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.valueOf(IMAGE_PNG_VALUE))
-                .body(imageData);
+        if (imageService.downloadImage(fileName) != null) {
+            byte[] imageData = imageService.downloadImage(fileName);
+
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.valueOf(IMAGE_PNG_VALUE))
+                    .body(imageData);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }
